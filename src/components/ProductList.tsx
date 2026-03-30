@@ -1,0 +1,82 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { supabase } from '@/lib/supabase'
+import type { Product } from '@/types/database'
+import { ProductCard } from './ProductCard'
+import { SearchFilters } from './SearchFilters'
+
+export function ProductList() {
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+  const [store, setStore] = useState('')
+  const [category, setCategory] = useState('')
+  const [sortBy, setSortBy] = useState('protein_per_100yen')
+
+  useEffect(() => {
+    fetchProducts()
+  }, [store, category, sortBy])
+
+  async function fetchProducts() {
+    setLoading(true)
+    try {
+      let query = supabase
+        .from('products')
+        .select('*')
+        .eq('is_active', true)
+
+      if (store) {
+        query = query.eq('store', store)
+      }
+
+      if (category) {
+        query = query.eq('category', category)
+      }
+
+      query = query.order(sortBy, { ascending: sortBy === 'price' || sortBy === 'calories' })
+
+      const { data, error } = await query.limit(50)
+
+      if (error) {
+        console.error('Error fetching products:', error)
+        return
+      }
+
+      setProducts(data || [])
+    } catch (error) {
+      console.error('Error:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div>
+      <SearchFilters
+        store={store}
+        category={category}
+        sortBy={sortBy}
+        onStoreChange={setStore}
+        onCategoryChange={setCategory}
+        onSortChange={setSortBy}
+      />
+
+      {loading ? (
+        <div className="flex justify-center items-center py-12">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
+        </div>
+      ) : products.length === 0 ? (
+        <div className="text-center py-12">
+          <p className="text-gray-500">商品が見つかりませんでした</p>
+          <p className="text-sm text-gray-400 mt-2">データを追加中です。しばらくお待ちください。</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
