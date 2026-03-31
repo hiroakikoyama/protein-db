@@ -1,0 +1,36 @@
+name: Auto Add Products
+
+on:
+  # 毎週月曜日 9:00 JST (0:00 UTC)
+  schedule:
+    - cron: '0 0 * * 1'
+  # 手動実行も可能
+  workflow_dispatch:
+
+jobs:
+  add-products:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run product addition script
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npx tsx scripts/auto-add-products.ts
+
+      - name: Notify completion (optional)
+        if: success()
+        run: echo "Products added successfully"
