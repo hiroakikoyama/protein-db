@@ -19,16 +19,21 @@ const stores = [
 const categories = [
   { value: '', label: '全カテゴリ' },
   { value: 'サラダチキン', label: 'サラダチキン' },
-  { value: 'プロテインバー', label: 'プロテインバー' },
-  { value: 'プロテインドリンク', label: 'プロテインドリンク' },
-  { value: 'ゆで卵', label: 'ゆで卵' },
-  { value: 'ヨーグルト', label: 'ヨーグルト' },
-  { value: 'サラダ', label: 'サラダ' },
-  { value: 'サンドイッチ', label: 'サンドイッチ' },
   { value: '弁当', label: '弁当' },
+  { value: 'プロテインドリンク', label: 'プロテインドリンク' },
+  { value: 'おにぎり', label: 'おにぎり' },
   { value: '魚', label: '魚' },
+  { value: 'ホットスナック', label: 'ホットスナック' },
+  { value: 'プロテインバー', label: 'プロテインバー' },
+  { value: 'サンドイッチ', label: 'サンドイッチ' },
+  { value: '麺', label: '麺' },
   { value: '豆腐', label: '豆腐' },
+  { value: 'ヨーグルト', label: 'ヨーグルト' },
+  { value: 'パン', label: 'パン' },
+  { value: 'ゆで卵', label: 'ゆで卵' },
   { value: 'おつまみ', label: 'おつまみ' },
+  { value: 'サラダ', label: 'サラダ' },
+  { value: '惣菜', label: '惣菜' },
 ]
 
 const sortOptions = [
