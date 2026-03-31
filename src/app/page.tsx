@@ -1,6 +1,7 @@
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { ProductList } from '@/components/ProductList'
+import { AdBanner } from '@/components/AdBanner'
 
 export default function Home() {
   return (
@@ -33,10 +34,18 @@ export default function Home() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 py-8">
+          <div className="mb-8">
+            <AdBanner slot="header" />
+          </div>
+
           <h2 className="text-2xl font-bold text-gray-800 mb-6">
             高タンパク商品一覧
           </h2>
           <ProductList />
+
+          <div className="mt-8">
+            <AdBanner slot="footer" />
+          </div>
         </section>
       </main>
       <Footer />

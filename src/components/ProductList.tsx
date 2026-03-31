@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase'
 import type { Product } from '@/types/database'
 import { ProductCard } from './ProductCard'
 import { SearchFilters } from './SearchFilters'
+import { AdBanner } from './AdBanner'
 
 export function ProductList() {
   const [products, setProducts] = useState<Product[]>([])
@@ -81,8 +82,15 @@ export function ProductList() {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {products.map((product, index) => (
+            <>
+              <ProductCard key={product.id} product={product} />
+              {index === 7 && (
+                <div key="ad-inline" className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
+                  <AdBanner slot="inline" />
+                </div>
+              )}
+            </>
           ))}
         </div>
       )}
