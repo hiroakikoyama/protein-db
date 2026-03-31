@@ -312,18 +312,3 @@ body {
   color: var(--border-light);
 }
 
-/* ===========================================
-   Placeholder Image
-   =========================================== */
-
-.placeholder-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #F5F5F5 0%, #EBEBEB 100%);
-  color: var(--text-muted);
-}
-
-.placeholder-image svg {
-  opacity: 0.4;
-}

@@ -25,32 +25,6 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <article className={`card ${storeClasses[product.store_name]}`}>
-      {/* Image */}
-      <div className="relative aspect-[4/3] overflow-hidden">
-        {product.image_url ? (
-          <img
-            src={product.image_url}
-            alt={product.product_name}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div className="placeholder-image w-full h-full">
-            <svg
-              className="w-12 h-12"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <path d="M21 15l-5-5L5 21" />
-            </svg>
-          </div>
-        )}
-      </div>
-
-      {/* Content */}
       <div className="p-5">
         {/* Store & Category */}
         <div className="flex items-center gap-2 mb-3">

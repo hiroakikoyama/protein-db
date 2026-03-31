@@ -144,23 +144,6 @@ export function RankingTabs() {
                   {rank}
                 </div>
 
-                {/* Image */}
-                <div className="flex-shrink-0 w-14 h-14 rounded-lg overflow-hidden bg-[var(--bg-tertiary)]">
-                  {product.image_url ? (
-                    <img
-                      src={product.image_url}
-                      alt={product.product_name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="placeholder-image w-full h-full">
-                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                        <rect x="3" y="3" width="18" height="18" rx="2" />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-
                 {/* Info */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
