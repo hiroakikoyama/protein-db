@@ -4,18 +4,17 @@ export interface Database {
       products: {
         Row: {
           id: string
-          store: 'seven' | 'lawson' | 'familymart'
-          name: string
+          store_name: 'seven' | 'lawson' | 'familymart'
+          product_name: string
           price: number
-          protein: number
-          fat: number
-          carbs: number
-          calories: number
-          protein_per_100yen: number
-          category: string
+          protein: number | null
+          fat: number | null
+          carbs: number | null
+          calories: number | null
           image_url: string | null
-          affiliate_url: string | null
-          is_active: boolean
+          product_url: string | null
+          category: string | null
+          is_available: boolean
           created_at: string
           updated_at: string
         }

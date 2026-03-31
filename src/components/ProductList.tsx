@@ -11,7 +11,7 @@ export function ProductList() {
   const [loading, setLoading] = useState(true)
   const [store, setStore] = useState('')
   const [category, setCategory] = useState('')
-  const [sortBy, setSortBy] = useState('protein_per_100yen')
+  const [sortBy, setSortBy] = useState('protein')
 
   useEffect(() => {
     fetchProducts()
@@ -23,17 +23,26 @@ export function ProductList() {
       let query = supabase
         .from('products')
         .select('*')
-        .eq('is_active', true)
+        .eq('is_available', true)
 
       if (store) {
-        query = query.eq('store', store)
+        query = query.eq('store_name', store)
       }
 
       if (category) {
         query = query.eq('category', category)
       }
 
-      query = query.order(sortBy, { ascending: sortBy === 'price' || sortBy === 'calories' })
+      // Sort by selected field
+      if (sortBy === 'protein') {
+        query = query.order('protein', { ascending: false, nullsFirst: false })
+      } else if (sortBy === 'calories') {
+        query = query.order('calories', { ascending: true, nullsFirst: false })
+      } else if (sortBy === 'price') {
+        query = query.order('price', { ascending: true })
+      } else {
+        query = query.order('protein', { ascending: false, nullsFirst: false })
+      }
 
       const { data, error } = await query.limit(50)
 

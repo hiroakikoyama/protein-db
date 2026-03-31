@@ -28,7 +28,6 @@ const categories = [
 ]
 
 const sortOptions = [
-  { value: 'protein_per_100yen', label: 'コスパ順' },
   { value: 'protein', label: 'タンパク質順' },
   { value: 'calories', label: 'カロリー順' },
   { value: 'price', label: '価格順' },
