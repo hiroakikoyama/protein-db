@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="bg-gray-800 text-gray-300 mt-auto">
       <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-white font-bold mb-3">コンビニ高タンパク飯DB</h3>
             <p className="text-sm">
@@ -12,7 +12,7 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-3">リンク</h4>
+            <h4 className="text-white font-bold mb-3">コンテンツ</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/" className="hover:text-white transition-colors">
@@ -27,6 +27,26 @@ export function Footer() {
               <li>
                 <Link href="/about" className="hover:text-white transition-colors">
                   このサイトについて
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-3">サイト情報</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/legal" className="hover:text-white transition-colors">
+                  運営者情報
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="hover:text-white transition-colors">
+                  プライバシーポリシー
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  お問い合わせ
                 </Link>
               </li>
             </ul>
