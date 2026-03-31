@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    google: "fDO2VSLozNCsKK6jthBDBShayDTgiqXfHcvip3hiIK8",
+  },
   openGraph: {
     title: "コンビニ高タンパク飯DB",
     description: "コンビニで買える高タンパク商品のデータベース",
