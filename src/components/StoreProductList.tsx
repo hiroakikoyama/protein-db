@@ -9,6 +9,13 @@ interface StoreProductListProps {
   storeName: 'seven' | 'lawson' | 'familymart'
 }
 
+const sortOptions = [
+  { value: 'protein', label: 'タンパク質が多い順' },
+  { value: 'cospa', label: 'コスパが良い順' },
+  { value: 'calories', label: 'カロリーが低い順' },
+  { value: 'price', label: '価格が安い順' },
+]
+
 export function StoreProductList({ storeName }: StoreProductListProps) {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
@@ -42,7 +49,19 @@ export function StoreProductList({ storeName }: StoreProductListProps) {
         return
       }
 
-      setProducts(data || [])
+      let sortedData: Product[] = data || []
+
+      if (sortBy === 'cospa') {
+        sortedData = sortedData
+          .filter((p) => p.price && p.price > 0)
+          .sort((a, b) => {
+            const cospaA = (a.protein || 0) / a.price * 100
+            const cospaB = (b.protein || 0) / b.price * 100
+            return cospaB - cospaA
+          })
+      }
+
+      setProducts(sortedData)
     } catch (error) {
       console.error('Error:', error)
     } finally {
@@ -52,43 +71,36 @@ export function StoreProductList({ storeName }: StoreProductListProps) {
 
   return (
     <div>
-      {/* ソート */}
-      <div className="mb-6 flex items-center gap-4">
-        <span className="text-gray-600 text-sm">並び替え:</span>
-        <div className="flex gap-2">
-          {[
-            { value: 'protein', label: 'タンパク質順' },
-            { value: 'calories', label: '低カロリー順' },
-            { value: 'price', label: '価格順' },
-          ].map((option) => (
-            <button
-              key={option.value}
-              onClick={() => setSortBy(option.value)}
-              className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                sortBy === option.value
-                  ? 'bg-gray-800 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              {option.label}
-            </button>
-          ))}
-        </div>
+      {/* Sort */}
+      <div className="flex flex-wrap items-center gap-2 mb-8">
+        {sortOptions.map((option) => (
+          <button
+            key={option.value}
+            onClick={() => setSortBy(option.value)}
+            className={`chip ${sortBy === option.value ? 'chip-active' : ''}`}
+          >
+            {option.label}
+          </button>
+        ))}
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
+        <div className="flex justify-center items-center py-20">
+          <div className="w-8 h-8 border-2 border-[var(--border-light)] border-t-[var(--text-primary)] rounded-full animate-spin"></div>
         </div>
       ) : products.length === 0 ? (
-        <div className="text-center py-12">
-          <p className="text-gray-500">商品が見つかりませんでした</p>
-          <p className="text-sm text-gray-400 mt-2">データを追加中です。しばらくお待ちください。</p>
+        <div className="text-center py-20">
+          <p className="text-[var(--text-tertiary)] mb-2">商品が見つかりませんでした</p>
+          <p className="text-[13px] text-[var(--text-muted)]">
+            データを追加中です
+          </p>
         </div>
       ) : (
         <>
-          <p className="text-gray-500 text-sm mb-4">{products.length}件の商品</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <p className="text-[13px] text-[var(--text-muted)] mb-6">
+            {products.length}件の商品
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

@@ -1,26 +1,329 @@
 @import "tailwindcss";
 
+/* ===========================================
+   Design System: コンビニ高タンパク飯DB
+   =========================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Background */
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F5F5F5;
+
+  /* Text */
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A4A4A;
+  --text-tertiary: #717171;
+  --text-muted: #9CA3AF;
+
+  /* Accent */
+  --accent-primary: #1A1A1A;
+  --accent-primary-hover: #333333;
+  --accent-highlight: #FF6B35;
+
+  /* Store Colors */
+  --store-seven: #E63E30;
+  --store-lawson: #0068B7;
+  --store-familymart: #00A040;
+
+  /* Border & Shadow */
+  --border-light: #E5E5E5;
+  --border-default: #D4D4D4;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.08);
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+
+  /* Transition */
+  --transition-default: all 0.2s ease;
+  --transition-fast: all 0.15s ease;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --font-sans: "Inter", "Noto Sans JP", system-ui, sans-serif;
 }
 
+/* Dark mode disabled for this project */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-primary: #FAFAFA;
+    --bg-secondary: #FFFFFF;
+    --text-primary: #1A1A1A;
   }
 }
 
+/* ===========================================
+   Base Styles
+   =========================================== */
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Inter", "Noto Sans JP", system-ui, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  line-height: 1.5;
+}
+
+/* ===========================================
+   Typography Scale
+   =========================================== */
+
+.text-hero {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-section {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.text-subsection {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.text-protein-value {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--accent-highlight);
+}
+
+.text-protein-unit {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+/* ===========================================
+   Custom Select Component
+   =========================================== */
+
+.select-custom {
+  appearance: none;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 10px 40px 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-default);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23717171' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.select-custom:hover {
+  border-color: var(--border-default);
+}
+
+.select-custom:focus {
+  outline: none;
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.08);
+}
+
+/* ===========================================
+   Button Styles
+   =========================================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: var(--accent-primary);
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: var(--transition-default);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  transition: var(--transition-default);
+}
+
+.btn-secondary:hover {
+  border-color: var(--border-default);
+  background-color: var(--bg-tertiary);
+}
+
+/* ===========================================
+   Card Styles
+   =========================================== */
+
+.card {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-default);
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Store border accent */
+.card-seven {
+  border-top: 2px solid var(--store-seven);
+}
+
+.card-lawson {
+  border-top: 2px solid var(--store-lawson);
+}
+
+.card-familymart {
+  border-top: 2px solid var(--store-familymart);
+}
+
+/* ===========================================
+   Filter Chip Styles
+   =========================================== */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.chip:hover {
+  border-color: var(--border-default);
+  background-color: var(--bg-tertiary);
+}
+
+.chip-active {
+  background-color: var(--text-primary);
+  border-color: var(--text-primary);
+  color: #FFFFFF;
+}
+
+.chip-active:hover {
+  background-color: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
+}
+
+/* ===========================================
+   Store Indicator
+   =========================================== */
+
+.store-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.store-dot-seven {
+  background-color: var(--store-seven);
+}
+
+.store-dot-lawson {
+  background-color: var(--store-lawson);
+}
+
+.store-dot-familymart {
+  background-color: var(--store-familymart);
+}
+
+/* ===========================================
+   Nutrient Display
+   =========================================== */
+
+.nutrient-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+}
+
+.nutrient-item {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.nutrient-label {
+  font-weight: 500;
+  color: var(--text-tertiary);
+}
+
+.nutrient-value {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.nutrient-divider {
+  color: var(--border-light);
+}
+
+/* ===========================================
+   Placeholder Image
+   =========================================== */
+
+.placeholder-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #F5F5F5 0%, #EBEBEB 100%);
+  color: var(--text-muted);
+}
+
+.placeholder-image svg {
+  opacity: 0.4;
 }

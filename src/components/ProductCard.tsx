@@ -2,10 +2,10 @@
 
 import type { Product } from '@/types/database'
 
-const storeColors = {
-  seven: 'bg-red-500',
-  lawson: 'bg-blue-500',
-  familymart: 'bg-green-500',
+const storeClasses = {
+  seven: 'card-seven',
+  lawson: 'card-lawson',
+  familymart: 'card-familymart',
 }
 
 const storeNames = {
@@ -24,71 +24,92 @@ export function ProductCard({ product }: ProductCardProps) {
     : null
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-      <div className="relative">
+    <article className={`card ${storeClasses[product.store_name]}`}>
+      {/* Image */}
+      <div className="relative aspect-[4/3] overflow-hidden">
         {product.image_url ? (
           <img
             src={product.image_url}
             alt={product.product_name}
-            className="w-full h-40 object-cover"
+            className="w-full h-full object-cover"
           />
         ) : (
-          <div className="w-full h-40 bg-gray-200 flex items-center justify-center">
-            <span className="text-gray-400 text-sm">No Image</span>
+          <div className="placeholder-image w-full h-full">
+            <svg
+              className="w-12 h-12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
           </div>
         )}
-        <span className={`absolute top-2 left-2 ${storeColors[product.store_name]} text-white text-xs px-2 py-1 rounded`}>
-          {storeNames[product.store_name]}
-        </span>
       </div>
 
-      <div className="p-4">
-        <h3 className="font-bold text-gray-800 mb-2 line-clamp-2">{product.product_name}</h3>
-
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-lg font-bold text-gray-900">¥{product.price}</span>
-          {product.category && <span className="text-sm text-gray-500">{product.category}</span>}
+      {/* Content */}
+      <div className="p-5">
+        {/* Store & Category */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className={`store-dot store-dot-${product.store_name}`}></span>
+          <span className="text-[12px] font-medium text-[var(--text-muted)]">
+            {storeNames[product.store_name]}
+          </span>
+          {product.category && (
+            <>
+              <span className="text-[var(--border-light)]">/</span>
+              <span className="text-[12px] text-[var(--text-muted)]">
+                {product.category}
+              </span>
+            </>
+          )}
         </div>
 
-        <div className="grid grid-cols-2 gap-2 text-sm mb-3">
-          <div className="bg-orange-50 rounded p-2 text-center">
-            <div className="text-orange-600 font-bold">{product.protein ?? '-'}g</div>
-            <div className="text-gray-500 text-xs">タンパク質</div>
+        {/* Product Name */}
+        <h3 className="text-[15px] font-semibold text-[var(--text-secondary)] leading-snug mb-4 line-clamp-2 min-h-[2.5em]">
+          {product.product_name}
+        </h3>
+
+        {/* Protein - Hero Display */}
+        <div className="flex items-baseline gap-1 mb-4">
+          <span className="text-protein-value">{product.protein ?? '-'}</span>
+          <span className="text-protein-unit">g</span>
+          <span className="text-[12px] text-[var(--text-muted)] ml-1">protein</span>
+        </div>
+
+        {/* Other Nutrients - Minimal Row */}
+        <div className="nutrient-row mb-4 pb-4 border-b border-[var(--border-light)]">
+          <div className="nutrient-item">
+            <span className="nutrient-label">F</span>
+            <span className="nutrient-value ml-1">{product.fat ?? '-'}g</span>
           </div>
-          <div className="bg-blue-50 rounded p-2 text-center">
-            <div className="text-blue-600 font-bold">{product.calories ?? '-'}kcal</div>
-            <div className="text-gray-500 text-xs">カロリー</div>
+          <span className="nutrient-divider">|</span>
+          <div className="nutrient-item">
+            <span className="nutrient-label">C</span>
+            <span className="nutrient-value ml-1">{product.carbs ?? '-'}g</span>
           </div>
-          <div className="bg-yellow-50 rounded p-2 text-center">
-            <div className="text-yellow-600 font-bold">{product.fat ?? '-'}g</div>
-            <div className="text-gray-500 text-xs">脂質</div>
-          </div>
-          <div className="bg-green-50 rounded p-2 text-center">
-            <div className="text-green-600 font-bold">{product.carbs ?? '-'}g</div>
-            <div className="text-gray-500 text-xs">炭水化物</div>
+          <span className="nutrient-divider">|</span>
+          <div className="nutrient-item">
+            <span className="nutrient-value">{product.calories ?? '-'}</span>
+            <span className="nutrient-label ml-0.5">kcal</span>
           </div>
         </div>
 
-        {proteinPer100yen && (
-          <div className="bg-purple-100 rounded-lg p-2 text-center">
-            <span className="text-purple-700 font-bold">
-              100円あたり {proteinPer100yen}g
+        {/* Price & Cospa */}
+        <div className="flex items-center justify-between">
+          <span className="text-[16px] font-semibold text-[var(--text-primary)]">
+            ¥{product.price?.toLocaleString()}
+          </span>
+          {proteinPer100yen && (
+            <span className="text-[12px] font-medium text-[var(--text-tertiary)] bg-[var(--bg-tertiary)] px-2.5 py-1 rounded-full">
+              {proteinPer100yen}g/¥100
             </span>
-            <span className="text-purple-500 text-xs block">タンパク質コスパ</span>
-          </div>
-        )}
-
-        {product.product_url && (
-          <a
-            href={product.product_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 block w-full bg-orange-500 hover:bg-orange-600 text-white text-center py-2 rounded-lg font-medium transition-colors"
-          >
-            詳細を見る
-          </a>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </article>
   )
 }

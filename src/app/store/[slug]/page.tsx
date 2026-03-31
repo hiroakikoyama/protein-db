@@ -7,39 +7,18 @@ import { notFound } from 'next/navigation'
 const storeInfo = {
   seven: {
     name: 'セブン-イレブン',
-    shortName: 'セブン',
-    color: 'red',
-    bgGradient: 'from-red-600 to-red-500',
-    description: 'セブン-イレブンで買える高タンパク商品。サラダチキンやたんぱく質が摂れるシリーズが充実。',
-    features: [
-      'たんぱく質が摂れるシリーズが豊富',
-      'サラダチキンの種類が多い',
-      'おにぎり・サンドイッチも高タンパク商品あり',
-    ],
+    description: 'サラダチキンや「たんぱく質が摂れる」シリーズが充実',
+    dotClass: 'store-dot-seven',
   },
   lawson: {
     name: 'ローソン',
-    shortName: 'ローソン',
-    color: 'blue',
-    bgGradient: 'from-blue-600 to-blue-500',
-    description: 'ローソンで買える高タンパク商品。ブランパンやロカボ商品など、糖質制限にも対応した商品が豊富。',
-    features: [
-      'ブランパンシリーズで糖質制限と高タンパクを両立',
-      'からあげクンなどホットスナックも充実',
-      'プライベートブランド商品が豊富',
-    ],
+    description: 'ブランパンやからあげクンなど、糖質制限にも対応した商品が豊富',
+    dotClass: 'store-dot-lawson',
   },
   familymart: {
     name: 'ファミリーマート',
-    shortName: 'ファミマ',
-    color: 'green',
-    bgGradient: 'from-green-600 to-green-500',
-    description: 'ファミリーマートで買える高タンパク商品。RIZAP監修商品やお母さん食堂シリーズなど独自商品が魅力。',
-    features: [
-      'RIZAP監修の低糖質・高タンパク商品',
-      'グリルチキンシリーズが人気',
-      'お母さん食堂の惣菜も高タンパク',
-    ],
+    description: 'グリルチキンやRIZAP監修商品など独自の高タンパク商品を展開',
+    dotClass: 'store-dot-familymart',
   },
 }
 
@@ -72,21 +51,23 @@ export default async function StorePage({ params }: { params: Promise<{ slug: st
     <>
       <Header />
       <main className="flex-1">
-        <section className={`bg-gradient-to-b ${store.bgGradient} text-white py-10`}>
-          <div className="max-w-6xl mx-auto px-4">
-            <h1 className="text-3xl font-bold mb-3">{store.name}の高タンパク商品</h1>
-            <p className="text-white/80 mb-6">{store.description}</p>
-            <div className="flex flex-wrap gap-3">
-              {store.features.map((feature, i) => (
-                <span key={i} className="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-sm">
-                  {feature}
-                </span>
-              ))}
+        {/* Hero */}
+        <section className="bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
+          <div className="max-w-6xl mx-auto px-6 py-12 md:py-16">
+            <div className="flex items-center gap-3 mb-3">
+              <span className={`store-dot ${store.dotClass}`} style={{ width: '10px', height: '10px' }}></span>
+              <h1 className="text-section text-[var(--text-primary)]">
+                {store.name}
+              </h1>
             </div>
+            <p className="text-[15px] text-[var(--text-tertiary)]">
+              {store.description}
+            </p>
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-4 py-8">
+        {/* Content */}
+        <section className="max-w-6xl mx-auto px-6 py-10">
           <StoreProductList storeName={slug as StoreSlug} />
         </section>
       </main>

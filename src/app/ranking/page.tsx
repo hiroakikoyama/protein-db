@@ -13,16 +13,20 @@ export default function RankingPage() {
     <>
       <Header />
       <main className="flex-1">
-        <section className="bg-gradient-to-b from-purple-600 to-purple-500 text-white py-10">
-          <div className="max-w-6xl mx-auto px-4 text-center">
-            <h1 className="text-3xl font-bold mb-3">高タンパク商品ランキング</h1>
-            <p className="text-purple-100">
-              目的別にコンビニ商品を比較。あなたに最適な商品を見つけよう
+        {/* Hero */}
+        <section className="bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
+          <div className="max-w-6xl mx-auto px-6 py-12 md:py-16">
+            <h1 className="text-section text-[var(--text-primary)] mb-3">
+              高タンパク商品ランキング
+            </h1>
+            <p className="text-[15px] text-[var(--text-tertiary)]">
+              目的別にコンビニ商品を比較
             </p>
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-4 py-8">
+        {/* Content */}
+        <section className="max-w-6xl mx-auto px-6 py-10">
           <RankingTabs />
         </section>
       </main>

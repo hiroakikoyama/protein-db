@@ -5,7 +5,6 @@ import { supabase } from '@/lib/supabase'
 import type { Product } from '@/types/database'
 import { ProductCard } from './ProductCard'
 import { SearchFilters } from './SearchFilters'
-import { AdBanner } from './AdBanner'
 
 export function ProductList() {
   const [products, setProducts] = useState<Product[]>([])
@@ -52,7 +51,20 @@ export function ProductList() {
         return
       }
 
-      setProducts(data || [])
+      let sortedData: Product[] = data || []
+
+      // コスパ順の場合はクライアントサイドでソート
+      if (sortBy === 'cospa') {
+        sortedData = sortedData
+          .filter((p) => p.price && p.price > 0)
+          .sort((a, b) => {
+            const cospaA = (a.protein || 0) / a.price * 100
+            const cospaB = (b.protein || 0) / b.price * 100
+            return cospaB - cospaA
+          })
+      }
+
+      setProducts(sortedData)
     } catch (error) {
       console.error('Error:', error)
     } finally {
@@ -72,27 +84,27 @@ export function ProductList() {
       />
 
       {loading ? (
-        <div className="flex justify-center items-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
+        <div className="flex justify-center items-center py-20">
+          <div className="w-8 h-8 border-2 border-[var(--border-light)] border-t-[var(--text-primary)] rounded-full animate-spin"></div>
         </div>
       ) : products.length === 0 ? (
-        <div className="text-center py-12">
-          <p className="text-gray-500">商品が見つかりませんでした</p>
-          <p className="text-sm text-gray-400 mt-2">データを追加中です。しばらくお待ちください。</p>
+        <div className="text-center py-20">
+          <p className="text-[var(--text-tertiary)] mb-2">商品が見つかりませんでした</p>
+          <p className="text-[13px] text-[var(--text-muted)]">
+            フィルターを変更してお試しください
+          </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {products.map((product, index) => (
-            <>
+        <>
+          <p className="text-[13px] text-[var(--text-muted)] mb-6">
+            {products.length}件の商品
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {products.map((product) => (
               <ProductCard key={product.id} product={product} />
-              {index === 7 && (
-                <div key="ad-inline" className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
-                  <AdBanner slot="inline" />
-                </div>
-              )}
-            </>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
     </div>
   )

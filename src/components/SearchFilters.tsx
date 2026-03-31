@@ -20,17 +20,22 @@ const categories = [
   { value: '', label: '全カテゴリ' },
   { value: 'サラダチキン', label: 'サラダチキン' },
   { value: 'プロテインバー', label: 'プロテインバー' },
+  { value: 'プロテインドリンク', label: 'プロテインドリンク' },
   { value: 'ゆで卵', label: 'ゆで卵' },
   { value: 'ヨーグルト', label: 'ヨーグルト' },
   { value: 'サラダ', label: 'サラダ' },
-  { value: 'おにぎり', label: 'おにぎり' },
-  { value: 'その他', label: 'その他' },
+  { value: 'サンドイッチ', label: 'サンドイッチ' },
+  { value: '弁当', label: '弁当' },
+  { value: '魚', label: '魚' },
+  { value: '豆腐', label: '豆腐' },
+  { value: 'おつまみ', label: 'おつまみ' },
 ]
 
 const sortOptions = [
-  { value: 'protein', label: 'タンパク質順' },
-  { value: 'calories', label: 'カロリー順' },
-  { value: 'price', label: '価格順' },
+  { value: 'protein', label: 'タンパク質が多い順' },
+  { value: 'cospa', label: 'コスパが良い順' },
+  { value: 'calories', label: 'カロリーが低い順' },
+  { value: 'price', label: '価格が安い順' },
 ]
 
 export function SearchFilters({
@@ -42,58 +47,50 @@ export function SearchFilters({
   onSortChange,
 }: SearchFiltersProps) {
   return (
-    <div className="bg-white rounded-lg shadow p-4 mb-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            店舗
-          </label>
-          <select
-            value={store}
-            onChange={(e) => onStoreChange(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+    <div className="flex flex-col gap-4 mb-8">
+      {/* Store Chips */}
+      <div className="flex flex-wrap gap-2">
+        {stores.map((s) => (
+          <button
+            key={s.value}
+            onClick={() => onStoreChange(s.value)}
+            className={`chip ${store === s.value ? 'chip-active' : ''}`}
           >
-            {stores.map((s) => (
-              <option key={s.value} value={s.value}>
-                {s.label}
-              </option>
-            ))}
-          </select>
-        </div>
+            {s.value && (
+              <span className={`store-dot store-dot-${s.value} mr-2`}></span>
+            )}
+            {s.label}
+          </button>
+        ))}
+      </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            カテゴリ
-          </label>
-          <select
-            value={category}
-            onChange={(e) => onCategoryChange(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-          >
-            {categories.map((c) => (
-              <option key={c.value} value={c.value}>
-                {c.label}
-              </option>
-            ))}
-          </select>
-        </div>
+      {/* Category & Sort */}
+      <div className="flex flex-wrap items-center gap-3">
+        <select
+          value={category}
+          onChange={(e) => onCategoryChange(e.target.value)}
+          className="select-custom"
+        >
+          {categories.map((c) => (
+            <option key={c.value} value={c.value}>
+              {c.label}
+            </option>
+          ))}
+        </select>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            並び替え
-          </label>
-          <select
-            value={sortBy}
-            onChange={(e) => onSortChange(e.target.value)}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-          >
-            {sortOptions.map((s) => (
-              <option key={s.value} value={s.value}>
-                {s.label}
-              </option>
-            ))}
-          </select>
-        </div>
+        <div className="h-5 w-px bg-[var(--border-light)] hidden sm:block" />
+
+        <select
+          value={sortBy}
+          onChange={(e) => onSortChange(e.target.value)}
+          className="select-custom"
+        >
+          {sortOptions.map((s) => (
+            <option key={s.value} value={s.value}>
+              {s.label}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   )
