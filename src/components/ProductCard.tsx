@@ -38,7 +38,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Product Name */}
-        <h3 className="text-[12px] font-semibold text-[var(--text-secondary)] leading-tight mb-1.5 line-clamp-1">
+        <h3 className="text-[12px] font-semibold text-[var(--text-secondary)] leading-tight mb-1.5 line-clamp-2">
           {product.product_name}
         </h3>
 
