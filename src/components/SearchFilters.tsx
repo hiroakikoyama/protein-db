@@ -38,10 +38,10 @@ const categories = [
 ]
 
 const sortOptions = [
-  { value: 'protein', label: 'タンパク質が多い順' },
-  { value: 'cospa', label: 'コスパが良い順' },
-  { value: 'calories', label: 'カロリーが低い順' },
-  { value: 'price', label: '価格が安い順' },
+  { value: 'protein', label: 'タンパク質順' },
+  { value: 'cospa', label: 'コスパ順' },
+  { value: 'calories', label: '低カロリー順' },
+  { value: 'price', label: '安い順' },
 ]
 
 export function SearchFilters({
@@ -53,51 +53,47 @@ export function SearchFilters({
   onSortChange,
 }: SearchFiltersProps) {
   return (
-    <div className="flex flex-col gap-4 mb-8">
+    <div className="flex flex-wrap items-center gap-1.5 mb-4">
       {/* Store Chips */}
-      <div className="flex flex-wrap gap-2">
-        {stores.map((s) => (
-          <button
-            key={s.value}
-            onClick={() => onStoreChange(s.value)}
-            className={`chip ${store === s.value ? 'chip-active' : ''}`}
-          >
-            {s.value && (
-              <span className={`store-dot store-dot-${s.value} mr-2`}></span>
-            )}
-            {s.label}
-          </button>
-        ))}
-      </div>
+      {stores.map((s) => (
+        <button
+          key={s.value}
+          onClick={() => onStoreChange(s.value)}
+          className={`chip !py-1 !px-2.5 !text-[12px] ${store === s.value ? 'chip-active' : ''}`}
+        >
+          {s.value && (
+            <span className={`store-dot store-dot-${s.value} mr-1.5`}></span>
+          )}
+          {s.label}
+        </button>
+      ))}
+
+      <div className="h-4 w-px bg-[var(--border-light)] mx-1" />
 
       {/* Category & Sort */}
-      <div className="flex flex-wrap items-center gap-3">
-        <select
-          value={category}
-          onChange={(e) => onCategoryChange(e.target.value)}
-          className="select-custom"
-        >
-          {categories.map((c) => (
-            <option key={c.value} value={c.value}>
-              {c.label}
-            </option>
-          ))}
-        </select>
+      <select
+        value={category}
+        onChange={(e) => onCategoryChange(e.target.value)}
+        className="select-custom !py-1.5 !px-2.5 !pr-8 !text-[12px]"
+      >
+        {categories.map((c) => (
+          <option key={c.value} value={c.value}>
+            {c.label}
+          </option>
+        ))}
+      </select>
 
-        <div className="h-5 w-px bg-[var(--border-light)] hidden sm:block" />
-
-        <select
-          value={sortBy}
-          onChange={(e) => onSortChange(e.target.value)}
-          className="select-custom"
-        >
-          {sortOptions.map((s) => (
-            <option key={s.value} value={s.value}>
-              {s.label}
-            </option>
-          ))}
-        </select>
-      </div>
+      <select
+        value={sortBy}
+        onChange={(e) => onSortChange(e.target.value)}
+        className="select-custom !py-1.5 !px-2.5 !pr-8 !text-[12px]"
+      >
+        {sortOptions.map((s) => (
+          <option key={s.value} value={s.value}>
+            {s.label}
+          </option>
+        ))}
+      </select>
     </div>
   )
 }
