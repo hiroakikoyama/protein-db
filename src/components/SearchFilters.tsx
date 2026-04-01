@@ -53,47 +53,49 @@ export function SearchFilters({
   onSortChange,
 }: SearchFiltersProps) {
   return (
-    <div className="flex flex-wrap items-center gap-1.5 mb-4">
-      {/* Store Chips */}
-      {stores.map((s) => (
-        <button
-          key={s.value}
-          onClick={() => onStoreChange(s.value)}
-          className={`chip !py-1 !px-2.5 !text-[12px] ${store === s.value ? 'chip-active' : ''}`}
-        >
-          {s.value && (
-            <span className={`store-dot store-dot-${s.value} mr-1.5`}></span>
-          )}
-          {s.label}
-        </button>
-      ))}
-
-      <div className="h-4 w-px bg-[var(--border-light)] mx-1" />
-
-      {/* Category & Sort */}
-      <select
-        value={category}
-        onChange={(e) => onCategoryChange(e.target.value)}
-        className="select-custom !py-1.5 !px-2.5 !pr-8 !text-[12px]"
-      >
-        {categories.map((c) => (
-          <option key={c.value} value={c.value}>
-            {c.label}
-          </option>
-        ))}
-      </select>
-
-      <select
-        value={sortBy}
-        onChange={(e) => onSortChange(e.target.value)}
-        className="select-custom !py-1.5 !px-2.5 !pr-8 !text-[12px]"
-      >
-        {sortOptions.map((s) => (
-          <option key={s.value} value={s.value}>
+    <div className="space-y-2 mb-4">
+      {/* Row 1: Store Chips - horizontal scroll on mobile */}
+      <div className="flex gap-1.5 overflow-x-auto pb-0.5 -mx-1 px-1 scrollbar-hide">
+        {stores.map((s) => (
+          <button
+            key={s.value}
+            onClick={() => onStoreChange(s.value)}
+            className={`chip !py-1 !px-2.5 !text-[12px] shrink-0 ${store === s.value ? 'chip-active' : ''}`}
+          >
+            {s.value && (
+              <span className={`store-dot store-dot-${s.value} mr-1.5`}></span>
+            )}
             {s.label}
-          </option>
+          </button>
         ))}
-      </select>
+      </div>
+
+      {/* Row 2: Category + Sort - side by side */}
+      <div className="flex gap-2">
+        <select
+          value={category}
+          onChange={(e) => onCategoryChange(e.target.value)}
+          className="select-custom !py-1.5 !px-2.5 !pr-7 !text-[12px] flex-1 min-w-0"
+        >
+          {categories.map((c) => (
+            <option key={c.value} value={c.value}>
+              {c.label}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={sortBy}
+          onChange={(e) => onSortChange(e.target.value)}
+          className="select-custom !py-1.5 !px-2.5 !pr-7 !text-[12px] flex-1 min-w-0"
+        >
+          {sortOptions.map((s) => (
+            <option key={s.value} value={s.value}>
+              {s.label}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   )
 }
