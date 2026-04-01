@@ -56,6 +56,15 @@ export function MobileMenu() {
                 </li>
                 <li>
                   <Link
+                    href="/meal-plan"
+                    className="block py-3 px-4 text-[15px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)] rounded-lg transition-all"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    メニュー提案
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/about"
                     className="block py-3 px-4 text-[15px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)] rounded-lg transition-all"
                     onClick={() => setIsOpen(false)}
@@ -99,6 +108,16 @@ export function MobileMenu() {
                   >
                     <span className="store-dot store-dot-familymart"></span>
                     ファミリーマート
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/store/mybasket"
+                    className="flex items-center gap-3 py-3 px-4 text-[15px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)] rounded-lg transition-all"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <span className="store-dot store-dot-mybasket"></span>
+                    まいばすけっと
                   </Link>
                 </li>
               </ul>

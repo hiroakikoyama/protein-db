@@ -26,7 +26,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-[13px] text-[var(--text-tertiary)] leading-relaxed">
-              セブン-イレブン、ローソン、ファミマで買える高タンパク商品を比較検索
+              セブン、ローソン、ファミマ、まいばすけっとで買える高タンパク商品を比較検索
             </p>
           </div>
 
@@ -94,6 +94,15 @@ export function Footer() {
                 >
                   <span className="store-dot store-dot-familymart"></span>
                   ファミリーマート
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/store/mybasket"
+                  className="flex items-center gap-2 text-[14px] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
+                >
+                  <span className="store-dot store-dot-mybasket"></span>
+                  まいばすけっと
                 </Link>
               </li>
             </ul>

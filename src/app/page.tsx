@@ -17,7 +17,7 @@ export default function Home() {
                 スマートに検索
               </h1>
               <p className="text-[17px] text-[var(--text-tertiary)] leading-relaxed mb-8">
-                セブン-イレブン、ローソン、ファミリーマートの商品を
+                セブン-イレブン、ローソン、ファミマ、まいばすけっとの商品を
                 <br className="hidden sm:block" />
                 タンパク質量・コスパ・カロリーで比較検索
               </p>
@@ -47,7 +47,7 @@ export default function Home() {
                       <circle cx="12" cy="12" r="10" />
                     </svg>
                   </div>
-                  <span className="text-[var(--text-secondary)]">3大コンビニ対応</span>
+                  <span className="text-[var(--text-secondary)]">4大コンビニ対応</span>
                 </div>
               </div>
             </div>

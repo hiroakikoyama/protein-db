@@ -6,7 +6,7 @@ import type { Product } from '@/types/database'
 import { ProductCard } from './ProductCard'
 
 interface StoreProductListProps {
-  storeName: 'seven' | 'lawson' | 'familymart'
+  storeName: 'seven' | 'lawson' | 'familymart' | 'mybasket'
 }
 
 const sortOptions = [
@@ -100,7 +100,7 @@ export function StoreProductList({ storeName }: StoreProductListProps) {
           <p className="text-[13px] text-[var(--text-muted)] mb-6">
             {products.length}件の商品
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

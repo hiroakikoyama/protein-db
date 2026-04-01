@@ -14,6 +14,7 @@ const stores = [
   { value: 'seven', label: 'セブン' },
   { value: 'lawson', label: 'ローソン' },
   { value: 'familymart', label: 'ファミマ' },
+  { value: 'mybasket', label: 'まいばす' },
 ]
 
 const categories = [

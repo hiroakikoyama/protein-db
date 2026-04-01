@@ -42,6 +42,12 @@ export function Header() {
             >
               ランキング
             </Link>
+            <Link
+              href="/meal-plan"
+              className="px-4 py-2 text-[14px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)] rounded-lg transition-all duration-200"
+            >
+              メニュー提案
+            </Link>
 
             {/* Store Dropdown */}
             <div className="relative group">
@@ -73,6 +79,13 @@ export function Header() {
                   >
                     <span className="store-dot store-dot-familymart"></span>
                     ファミリーマート
+                  </Link>
+                  <Link
+                    href="/store/mybasket"
+                    className="flex items-center gap-3 px-4 py-2.5 text-[14px] text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)] transition-colors"
+                  >
+                    <span className="store-dot store-dot-mybasket"></span>
+                    まいばすけっと
                   </Link>
                 </div>
               </div>

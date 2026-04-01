@@ -4,13 +4,14 @@ export interface Database {
       products: {
         Row: {
           id: string
-          store_name: 'seven' | 'lawson' | 'familymart'
+          store_name: 'seven' | 'lawson' | 'familymart' | 'mybasket'
           product_name: string
           price: number
           protein: number | null
           fat: number | null
           carbs: number | null
           calories: number | null
+          fiber: number | null
           image_url: string | null
           product_url: string | null
           category: string | null

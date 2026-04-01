@@ -20,6 +20,11 @@ const storeInfo = {
     description: 'グリルチキンやRIZAP監修商品など独自の高タンパク商品を展開',
     dotClass: 'store-dot-familymart',
   },
+  mybasket: {
+    name: 'まいばすけっと',
+    description: 'トップバリュのPB商品を中心に、高タンパク・低糖質商品が充実',
+    dotClass: 'store-dot-mybasket',
+  },
 }
 
 type StoreSlug = keyof typeof storeInfo

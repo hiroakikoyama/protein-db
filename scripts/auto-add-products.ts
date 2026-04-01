@@ -19,7 +19,7 @@ if (!anthropicApiKey) {
 const supabase = createClient(supabaseUrl, supabaseKey)
 const anthropic = new Anthropic({ apiKey: anthropicApiKey })
 
-const STORES = ['seven', 'lawson', 'familymart'] as const
+const STORES = ['seven', 'lawson', 'familymart', 'mybasket'] as const
 const CATEGORIES = [
   'サラダチキン', '弁当', 'プロテインドリンク', 'おにぎり', '魚',
   'ホットスナック', 'プロテインバー', 'サンドイッチ', '麺', '豆腐',
@@ -52,7 +52,8 @@ async function generateProducts(store: string, category: string, count: number =
   const storeNameJa = {
     seven: 'セブン-イレブン',
     lawson: 'ローソン',
-    familymart: 'ファミリーマート'
+    familymart: 'ファミリーマート',
+    mybasket: 'まいばすけっと'
   }[store]
 
   const prompt = `あなたは日本のコンビニエンスストアの商品データベースを作成するアシスタントです。

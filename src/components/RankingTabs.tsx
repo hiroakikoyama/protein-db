@@ -29,6 +29,7 @@ const storeNames = {
   seven: 'セブン',
   lawson: 'ローソン',
   familymart: 'ファミマ',
+  mybasket: 'まいばす',
 }
 
 export function RankingTabs() {

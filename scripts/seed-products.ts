@@ -25,6 +25,7 @@ const products = [
     carbs: 0.3,
     calories: 114,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -36,6 +37,7 @@ const products = [
     carbs: 0.5,
     calories: 118,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -47,6 +49,7 @@ const products = [
     carbs: 0.8,
     calories: 115,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -58,6 +61,7 @@ const products = [
     carbs: 0.6,
     calories: 122,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -69,6 +73,7 @@ const products = [
     carbs: 0.5,
     calories: 66,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -80,6 +85,7 @@ const products = [
     carbs: 0.8,
     calories: 68,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -91,6 +97,7 @@ const products = [
     carbs: 0.5,
     calories: 99,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   // たんぱく質が摂れるシリーズ
@@ -103,6 +110,7 @@ const products = [
     carbs: 12.3,
     calories: 235,
     category: 'サラダ',
+    fiber: 3.0,
     is_available: true,
   },
   {
@@ -114,6 +122,7 @@ const products = [
     carbs: 28.0,
     calories: 358,
     category: 'サラダ',
+    fiber: 2.5,
     is_available: true,
   },
   {
@@ -125,6 +134,7 @@ const products = [
     carbs: 26.8,
     calories: 345,
     category: 'サンドイッチ',
+    fiber: 1.5,
     is_available: true,
   },
   {
@@ -136,6 +146,7 @@ const products = [
     carbs: 58.0,
     calories: 472,
     category: '弁当',
+    fiber: 2.5,
     is_available: true,
   },
   // ゆで卵系
@@ -148,6 +159,7 @@ const products = [
     carbs: 0.6,
     calories: 142,
     category: 'ゆで卵',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -159,6 +171,7 @@ const products = [
     carbs: 0.8,
     calories: 135,
     category: 'ゆで卵',
+    fiber: 0.0,
     is_available: true,
   },
   // プロテインバー・ドリンク
@@ -171,6 +184,7 @@ const products = [
     carbs: 12.1,
     calories: 211,
     category: 'プロテインバー',
+    fiber: 1.5,
     is_available: true,
   },
   {
@@ -182,6 +196,7 @@ const products = [
     carbs: 14.8,
     calories: 210,
     category: 'プロテインバー',
+    fiber: 1.8,
     is_available: true,
   },
   {
@@ -193,6 +208,7 @@ const products = [
     carbs: 14.5,
     calories: 194,
     category: 'プロテインバー',
+    fiber: 0.5,
     is_available: true,
   },
   {
@@ -204,6 +220,7 @@ const products = [
     carbs: 10.4,
     calories: 102,
     category: 'プロテインドリンク',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -215,6 +232,7 @@ const products = [
     carbs: 10.5,
     calories: 102,
     category: 'プロテインドリンク',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -226,6 +244,7 @@ const products = [
     carbs: 10.5,
     calories: 102,
     category: 'プロテインドリンク',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -237,6 +256,7 @@ const products = [
     carbs: 10.0,
     calories: 100,
     category: 'プロテインドリンク',
+    fiber: 0.0,
     is_available: true,
   },
   // その他高タンパク
@@ -249,6 +269,7 @@ const products = [
     carbs: 1.2,
     calories: 198,
     category: 'おつまみ',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -260,6 +281,7 @@ const products = [
     carbs: 0.5,
     calories: 82,
     category: 'おつまみ',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -271,6 +293,7 @@ const products = [
     carbs: 1.5,
     calories: 82,
     category: '豆腐',
+    fiber: 1.5,
     is_available: true,
   },
   {
@@ -282,6 +305,7 @@ const products = [
     carbs: 1.8,
     calories: 84,
     category: '豆腐',
+    fiber: 1.5,
     is_available: true,
   },
   {
@@ -293,6 +317,7 @@ const products = [
     carbs: 5.0,
     calories: 100,
     category: 'ヨーグルト',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -304,6 +329,7 @@ const products = [
     carbs: 0.2,
     calories: 149,
     category: '魚',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -315,6 +341,7 @@ const products = [
     carbs: 0.3,
     calories: 228,
     category: '魚',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -326,6 +353,7 @@ const products = [
     carbs: 24.5,
     calories: 272,
     category: 'サンドイッチ',
+    fiber: 1.5,
     is_available: true,
   },
 
@@ -342,6 +370,7 @@ const products = [
     carbs: 0.4,
     calories: 113,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -353,6 +382,7 @@ const products = [
     carbs: 0.8,
     calories: 116,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -364,6 +394,7 @@ const products = [
     carbs: 0.6,
     calories: 115,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -375,6 +406,7 @@ const products = [
     carbs: 1.0,
     calories: 114,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -386,6 +418,7 @@ const products = [
     carbs: 0.5,
     calories: 62,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -397,6 +430,7 @@ const products = [
     carbs: 0.8,
     calories: 65,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   // たんぱく質シリーズ
@@ -409,6 +443,7 @@ const products = [
     carbs: 28.5,
     calories: 358,
     category: 'サンドイッチ',
+    fiber: 1.5,
     is_available: true,
   },
   {
@@ -420,6 +455,7 @@ const products = [
     carbs: 14.0,
     calories: 254,
     category: 'サラダ',
+    fiber: 3.0,
     is_available: true,
   },
   {
@@ -431,6 +467,7 @@ const products = [
     carbs: 18.0,
     calories: 298,
     category: 'サラダ',
+    fiber: 3.5,
     is_available: true,
   },
   // ブランパン（高タンパク・低糖質）
@@ -443,6 +480,7 @@ const products = [
     carbs: 4.4,
     calories: 132,
     category: 'パン',
+    fiber: 5.5,
     is_available: true,
   },
   {
@@ -454,6 +492,7 @@ const products = [
     carbs: 5.2,
     calories: 162,
     category: 'パン',
+    fiber: 5.2,
     is_available: true,
   },
   {
@@ -465,6 +504,7 @@ const products = [
     carbs: 6.0,
     calories: 145,
     category: 'パン',
+    fiber: 4.8,
     is_available: true,
   },
   // ゆで卵系
@@ -477,6 +517,7 @@ const products = [
     carbs: 0.4,
     calories: 138,
     category: 'ゆで卵',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -488,6 +529,7 @@ const products = [
     carbs: 0.2,
     calories: 69,
     category: 'ゆで卵',
+    fiber: 0.0,
     is_available: true,
   },
   // プロテイン系
@@ -500,6 +542,7 @@ const products = [
     carbs: 10.5,
     calories: 102,
     category: 'プロテインドリンク',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -511,6 +554,7 @@ const products = [
     carbs: 10.4,
     calories: 102,
     category: 'プロテインドリンク',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -522,6 +566,7 @@ const products = [
     carbs: 12.1,
     calories: 211,
     category: 'プロテインバー',
+    fiber: 1.5,
     is_available: true,
   },
   {
@@ -533,6 +578,7 @@ const products = [
     carbs: 15.0,
     calories: 198,
     category: 'プロテインバー',
+    fiber: 1.5,
     is_available: true,
   },
   {
@@ -544,6 +590,7 @@ const products = [
     carbs: 11.0,
     calories: 185,
     category: 'プロテインバー',
+    fiber: 1.2,
     is_available: true,
   },
   // からあげクン（意外と高タンパク）
@@ -556,6 +603,7 @@ const products = [
     carbs: 8.0,
     calories: 220,
     category: 'ホットスナック',
+    fiber: 0.5,
     is_available: true,
   },
   {
@@ -567,6 +615,7 @@ const products = [
     carbs: 8.5,
     calories: 215,
     category: 'ホットスナック',
+    fiber: 0.5,
     is_available: true,
   },
   // その他
@@ -579,6 +628,7 @@ const products = [
     carbs: 0.2,
     calories: 196,
     category: '魚',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -590,6 +640,7 @@ const products = [
     carbs: 0.3,
     calories: 168,
     category: '魚',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -601,6 +652,7 @@ const products = [
     carbs: 4.5,
     calories: 100,
     category: 'ヨーグルト',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -612,6 +664,7 @@ const products = [
     carbs: 10.5,
     calories: 122,
     category: 'ヨーグルト',
+    fiber: 0.0,
     is_available: true,
   },
 
@@ -628,6 +681,7 @@ const products = [
     carbs: 0.5,
     calories: 132,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -639,6 +693,7 @@ const products = [
     carbs: 1.2,
     calories: 138,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -650,6 +705,7 @@ const products = [
     carbs: 0.8,
     calories: 135,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -661,6 +717,7 @@ const products = [
     carbs: 1.5,
     calories: 133,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -672,6 +729,7 @@ const products = [
     carbs: 0.5,
     calories: 64,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -683,6 +741,7 @@ const products = [
     carbs: 0.8,
     calories: 66,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   // RIZAP監修
@@ -695,6 +754,7 @@ const products = [
     carbs: 1.0,
     calories: 72,
     category: 'サラダチキン',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -706,6 +766,7 @@ const products = [
     carbs: 8.0,
     calories: 158,
     category: '麺',
+    fiber: 3.0,
     is_available: true,
   },
   // たんぱく質シリーズ
@@ -718,6 +779,7 @@ const products = [
     carbs: 32.0,
     calories: 332,
     category: 'サンドイッチ',
+    fiber: 2.5,
     is_available: true,
   },
   {
@@ -729,6 +791,7 @@ const products = [
     carbs: 12.5,
     calories: 238,
     category: 'サラダ',
+    fiber: 3.0,
     is_available: true,
   },
   {
@@ -740,6 +803,7 @@ const products = [
     carbs: 52.0,
     calories: 425,
     category: '弁当',
+    fiber: 2.0,
     is_available: true,
   },
   // ゆで卵系
@@ -752,6 +816,7 @@ const products = [
     carbs: 0.6,
     calories: 138,
     category: 'ゆで卵',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -763,6 +828,7 @@ const products = [
     carbs: 0.3,
     calories: 69,
     category: 'ゆで卵',
+    fiber: 0.0,
     is_available: true,
   },
   // プロテイン系
@@ -775,6 +841,7 @@ const products = [
     carbs: 10.4,
     calories: 102,
     category: 'プロテインドリンク',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -786,6 +853,7 @@ const products = [
     carbs: 10.5,
     calories: 102,
     category: 'プロテインドリンク',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -797,6 +865,7 @@ const products = [
     carbs: 12.1,
     calories: 211,
     category: 'プロテインバー',
+    fiber: 1.5,
     is_available: true,
   },
   {
@@ -808,6 +877,7 @@ const products = [
     carbs: 14.8,
     calories: 210,
     category: 'プロテインバー',
+    fiber: 1.8,
     is_available: true,
   },
   {
@@ -819,6 +889,7 @@ const products = [
     carbs: 12.0,
     calories: 182,
     category: 'プロテインバー',
+    fiber: 1.0,
     is_available: true,
   },
   // ホットスナック
@@ -831,6 +902,7 @@ const products = [
     carbs: 14.0,
     calories: 242,
     category: 'ホットスナック',
+    fiber: 0.5,
     is_available: true,
   },
   {
@@ -842,6 +914,7 @@ const products = [
     carbs: 13.5,
     calories: 238,
     category: 'ホットスナック',
+    fiber: 0.5,
     is_available: true,
   },
   // その他
@@ -854,6 +927,7 @@ const products = [
     carbs: 0.2,
     calories: 218,
     category: '魚',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -865,6 +939,7 @@ const products = [
     carbs: 0.3,
     calories: 162,
     category: '魚',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -876,6 +951,7 @@ const products = [
     carbs: 4.8,
     calories: 96,
     category: 'ヨーグルト',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -887,6 +963,7 @@ const products = [
     carbs: 12.5,
     calories: 90,
     category: 'ヨーグルト',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -898,6 +975,7 @@ const products = [
     carbs: 1.2,
     calories: 78,
     category: '豆腐',
+    fiber: 1.5,
     is_available: true,
   },
   {
@@ -909,6 +987,7 @@ const products = [
     carbs: 1.0,
     calories: 148,
     category: 'おつまみ',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -920,6 +999,7 @@ const products = [
     carbs: 0.5,
     calories: 82,
     category: 'おつまみ',
+    fiber: 0.0,
     is_available: true,
   },
   {
@@ -931,6 +1011,7 @@ const products = [
     carbs: 8.0,
     calories: 118,
     category: 'おつまみ',
+    fiber: 0.0,
     is_available: true,
   },
 ]

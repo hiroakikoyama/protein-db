@@ -6,12 +6,14 @@ const storeClasses = {
   seven: 'card-seven',
   lawson: 'card-lawson',
   familymart: 'card-familymart',
+  mybasket: 'card-mybasket',
 }
 
 const storeNames = {
   seven: 'セブン',
   lawson: 'ローソン',
   familymart: 'ファミマ',
+  mybasket: 'まいばす',
 }
 
 interface ProductCardProps {
@@ -25,60 +27,61 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <article className={`card ${storeClasses[product.store_name]}`}>
-      <div className="p-5">
-        {/* Store & Category */}
-        <div className="flex items-center gap-2 mb-3">
+      <div className="px-3 py-2.5">
+        {/* Row 1: Store + Name */}
+        <div className="flex items-center gap-1.5 mb-1">
           <span className={`store-dot store-dot-${product.store_name}`}></span>
-          <span className="text-[12px] font-medium text-[var(--text-muted)]">
+          <span className="text-[11px] text-[var(--text-muted)] shrink-0">
             {storeNames[product.store_name]}
           </span>
           {product.category && (
             <>
-              <span className="text-[var(--border-light)]">/</span>
-              <span className="text-[12px] text-[var(--text-muted)]">
+              <span className="text-[10px] text-[var(--border-default)]">/</span>
+              <span className="text-[11px] text-[var(--text-muted)] truncate">
                 {product.category}
               </span>
             </>
           )}
         </div>
 
-        {/* Product Name */}
-        <h3 className="text-[15px] font-semibold text-[var(--text-secondary)] leading-snug mb-4 line-clamp-2 min-h-[2.5em]">
+        {/* Row 2: Product Name */}
+        <h3 className="text-[13px] font-semibold text-[var(--text-secondary)] leading-tight mb-2 line-clamp-1">
           {product.product_name}
         </h3>
 
-        {/* Protein - Hero Display */}
-        <div className="flex items-baseline gap-1 mb-4">
-          <span className="text-protein-value">{product.protein ?? '-'}</span>
-          <span className="text-protein-unit">g</span>
-          <span className="text-[12px] text-[var(--text-muted)] ml-1">protein</span>
+        {/* Row 3: Protein hero + PFC inline */}
+        <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-baseline gap-0.5 shrink-0">
+            <span className="text-[20px] font-bold leading-none text-[var(--accent-highlight)]">
+              {product.protein ?? '-'}
+            </span>
+            <span className="text-[11px] font-medium text-[var(--text-tertiary)]">g</span>
+          </div>
+          <div className="nutrient-row text-[11px]">
+            <div className="nutrient-item">
+              <span className="nutrient-label">F</span>
+              <span className="nutrient-value ml-0.5">{product.fat ?? '-'}</span>
+            </div>
+            <span className="nutrient-divider">|</span>
+            <div className="nutrient-item">
+              <span className="nutrient-label">C</span>
+              <span className="nutrient-value ml-0.5">{product.carbs ?? '-'}</span>
+            </div>
+            <span className="nutrient-divider">|</span>
+            <div className="nutrient-item">
+              <span className="nutrient-value">{product.calories ?? '-'}</span>
+              <span className="nutrient-label ml-0.5">kcal</span>
+            </div>
+          </div>
         </div>
 
-        {/* Other Nutrients - Minimal Row */}
-        <div className="nutrient-row mb-4 pb-4 border-b border-[var(--border-light)]">
-          <div className="nutrient-item">
-            <span className="nutrient-label">F</span>
-            <span className="nutrient-value ml-1">{product.fat ?? '-'}g</span>
-          </div>
-          <span className="nutrient-divider">|</span>
-          <div className="nutrient-item">
-            <span className="nutrient-label">C</span>
-            <span className="nutrient-value ml-1">{product.carbs ?? '-'}g</span>
-          </div>
-          <span className="nutrient-divider">|</span>
-          <div className="nutrient-item">
-            <span className="nutrient-value">{product.calories ?? '-'}</span>
-            <span className="nutrient-label ml-0.5">kcal</span>
-          </div>
-        </div>
-
-        {/* Price & Cospa */}
-        <div className="flex items-center justify-between">
-          <span className="text-[16px] font-semibold text-[var(--text-primary)]">
+        {/* Row 4: Price + Cospa */}
+        <div className="flex items-center justify-between pt-1.5 border-t border-[var(--border-light)]">
+          <span className="text-[13px] font-semibold text-[var(--text-primary)]">
             ¥{product.price?.toLocaleString()}
           </span>
           {proteinPer100yen && (
-            <span className="text-[12px] font-medium text-[var(--text-tertiary)] bg-[var(--bg-tertiary)] px-2.5 py-1 rounded-full">
+            <span className="text-[11px] font-medium text-[var(--text-tertiary)] bg-[var(--bg-tertiary)] px-2 py-0.5 rounded-full">
               {proteinPer100yen}g/¥100
             </span>
           )}
