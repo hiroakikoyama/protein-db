@@ -142,10 +142,13 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
+        {/* Copyright & Disclaimer */}
         <div className="border-t border-[var(--border-light)] mt-10 pt-8">
           <p className="text-[12px] text-[var(--text-muted)] text-center">
             &copy; {new Date().getFullYear()} コンビニ高タンパク飯DB
+          </p>
+          <p className="text-[10px] text-[var(--text-muted)] text-center mt-2 opacity-60">
+            ※ 栄養成分値は各メーカー公式情報に基づきますが、一部推定値を含みます。正確な値は商品パッケージの栄養成分表示をご確認ください。
           </p>
         </div>
       </div>
