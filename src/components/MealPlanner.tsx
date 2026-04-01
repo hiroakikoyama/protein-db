@@ -322,22 +322,22 @@ const SLOT_ROLES: Record<MealSlot, { main: string[]; protein: string[]; side: st
   breakfast: {
     main: ['おにぎり', 'サンドイッチ', 'パン'],
     protein: ['ゆで卵', 'ヨーグルト', 'プロテインドリンク', 'サラダチキン'],
-    side: ['サラダ', 'プロテインバー'],
+    side: ['サラダ', 'プロテインバー', '豆腐'],
   },
   lunch: {
     main: ['弁当', 'おにぎり', 'サンドイッチ', '麺'],
     protein: ['サラダチキン', 'ホットスナック', '魚', '惣菜'],
-    side: ['サラダ', 'ゆで卵', '豆腐'],
+    side: ['サラダ', 'ゆで卵', '豆腐', 'パン'],
   },
   dinner: {
     main: ['弁当', '麺', 'おにぎり'],
     protein: ['サラダチキン', '魚', 'ホットスナック', '惣菜', 'おつまみ'],
-    side: ['サラダ', '豆腐', 'ゆで卵'],
+    side: ['サラダ', '豆腐', 'ゆで卵', 'パン'],
   },
   snack: {
     main: ['プロテインバー'],
     protein: ['プロテインドリンク', 'ヨーグルト'],
-    side: ['ゆで卵', '豆腐'],
+    side: ['ゆで卵', '豆腐', 'サラダ'],
   },
 }
 
@@ -350,20 +350,22 @@ function scorePlan(plan: Record<MealSlot, Product[]>, targets: Targets): number 
   const fRatio = targets.fat > 0 ? t.fat / targets.fat : 1
   const cRatio = targets.carbs > 0 ? t.carbs / targets.carbs : 1
   const calRatio = targets.calories > 0 ? t.calories / targets.calories : 1
+  const fiRatio = targets.fiber > 0 ? t.fiber / targets.fiber : 1
 
   // P: 95%以上を要求（不足ペナルティ大）
   const pPenalty = pRatio < 0.95 ? (0.95 - pRatio) * 500 : pRatio > 1.15 ? (pRatio - 1.15) * 200 : 0
-  // F, C, Cal: 90-110%を要求
+  // F, C, Cal, 繊維: 90-110%を要求
   const fPenalty = fRatio < 0.9 ? (0.9 - fRatio) * 300 : fRatio > 1.1 ? (fRatio - 1.1) * 300 : 0
   const cPenalty = cRatio < 0.9 ? (0.9 - cRatio) * 300 : cRatio > 1.1 ? (cRatio - 1.1) * 300 : 0
   const calPenalty = calRatio < 0.9 ? (0.9 - calRatio) * 400 : calRatio > 1.1 ? (calRatio - 1.1) * 400 : 0
+  const fiPenalty = fiRatio < 0.9 ? (0.9 - fiRatio) * 400 : fiRatio > 1.1 ? (fiRatio - 1.1) * 400 : 0
 
   // カテゴリ多様性ボーナス（重複カテゴリが少ないほど良い）
   const cats = all.map((p) => p.category)
   const uniqueCats = new Set(cats).size
   const diversityBonus = uniqueCats * -5
 
-  return pPenalty + fPenalty + cPenalty + calPenalty + diversityBonus
+  return pPenalty + fPenalty + cPenalty + calPenalty + fiPenalty + diversityBonus
 }
 
 // プランが基準を満たしているか判定
