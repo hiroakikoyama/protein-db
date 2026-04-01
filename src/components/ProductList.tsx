@@ -99,7 +99,7 @@ export function ProductList() {
           <p className="text-[13px] text-[var(--text-muted)] mb-6">
             {products.length}件の商品
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          <div className="flex flex-col gap-2">
             {products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
