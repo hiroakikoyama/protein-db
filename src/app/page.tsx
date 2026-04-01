@@ -7,55 +7,29 @@ export default function Home() {
     <>
       <Header />
       <main className="flex-1">
-        {/* Hero Section */}
+        {/* Hero Section - Compact */}
         <section className="bg-[var(--bg-secondary)] border-b border-[var(--border-light)]">
-          <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-            <div className="max-w-2xl">
-              <h1 className="text-hero text-[var(--text-primary)] mb-4">
-                高タンパク商品を
-                <br />
-                スマートに検索
-              </h1>
-              <p className="text-[17px] text-[var(--text-tertiary)] leading-relaxed mb-8">
-                セブン-イレブン、ローソン、ファミマ、まいばすけっとの商品を
-                <br className="hidden sm:block" />
-                タンパク質量・コスパ・カロリーで比較検索
-              </p>
-              <div className="flex flex-wrap gap-6 text-[14px]">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-[var(--bg-tertiary)] flex items-center justify-center">
-                    <svg className="w-4 h-4 text-[var(--text-tertiary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M9 12l2 2 4-4" />
-                      <circle cx="12" cy="12" r="10" />
-                    </svg>
-                  </div>
-                  <span className="text-[var(--text-secondary)]">タンパク質量で比較</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-[var(--bg-tertiary)] flex items-center justify-center">
-                    <svg className="w-4 h-4 text-[var(--text-tertiary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M9 12l2 2 4-4" />
-                      <circle cx="12" cy="12" r="10" />
-                    </svg>
-                  </div>
-                  <span className="text-[var(--text-secondary)]">100円あたりコスパ算出</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-[var(--bg-tertiary)] flex items-center justify-center">
-                    <svg className="w-4 h-4 text-[var(--text-tertiary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M9 12l2 2 4-4" />
-                      <circle cx="12" cy="12" r="10" />
-                    </svg>
-                  </div>
-                  <span className="text-[var(--text-secondary)]">4大コンビニ対応</span>
-                </div>
+          <div className="max-w-6xl mx-auto px-6 py-5 md:py-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <h1 className="text-[20px] sm:text-[26px] font-bold text-[var(--text-primary)] leading-tight">
+                  コンビニ高タンパク飯DB
+                </h1>
+                <p className="text-[13px] text-[var(--text-tertiary)] mt-1">
+                  セブン・ローソン・ファミマ・まいばすの商品をタンパク質量・コスパ・カロリーで比較
+                </p>
+              </div>
+              <div className="flex gap-4 text-[12px] text-[var(--text-muted)] shrink-0">
+                <span>P量で比較</span>
+                <span>コスパ算出</span>
+                <span>4チェーン対応</span>
               </div>
             </div>
           </div>
         </section>
 
         {/* Product List Section */}
-        <section className="max-w-6xl mx-auto px-6 py-12">
+        <section className="max-w-6xl mx-auto px-6 py-6">
           <ProductList />
         </section>
       </main>

@@ -27,61 +27,44 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <article className={`card ${storeClasses[product.store_name]}`}>
-      <div className="px-3 py-2.5">
-        {/* Row 1: Store + Name */}
-        <div className="flex items-center gap-1.5 mb-1">
+      <div className="px-2.5 py-2">
+        {/* Store + Category */}
+        <div className="flex items-center gap-1 mb-0.5">
           <span className={`store-dot store-dot-${product.store_name}`}></span>
-          <span className="text-[11px] text-[var(--text-muted)] shrink-0">
+          <span className="text-[10px] text-[var(--text-muted)] truncate">
             {storeNames[product.store_name]}
+            {product.category ? ` / ${product.category}` : ''}
           </span>
-          {product.category && (
-            <>
-              <span className="text-[10px] text-[var(--border-default)]">/</span>
-              <span className="text-[11px] text-[var(--text-muted)] truncate">
-                {product.category}
-              </span>
-            </>
-          )}
         </div>
 
-        {/* Row 2: Product Name */}
-        <h3 className="text-[13px] font-semibold text-[var(--text-secondary)] leading-tight mb-2 line-clamp-1">
+        {/* Product Name */}
+        <h3 className="text-[12px] font-semibold text-[var(--text-secondary)] leading-tight mb-1.5 line-clamp-1">
           {product.product_name}
         </h3>
 
-        {/* Row 3: Protein hero + PFC inline */}
-        <div className="flex items-center gap-3 mb-2">
-          <div className="flex items-baseline gap-0.5 shrink-0">
-            <span className="text-[20px] font-bold leading-none text-[var(--accent-highlight)]">
-              {product.protein ?? '-'}
-            </span>
-            <span className="text-[11px] font-medium text-[var(--text-tertiary)]">g</span>
-          </div>
-          <div className="nutrient-row text-[11px]">
-            <div className="nutrient-item">
-              <span className="nutrient-label">F</span>
-              <span className="nutrient-value ml-0.5">{product.fat ?? '-'}</span>
-            </div>
-            <span className="nutrient-divider">|</span>
-            <div className="nutrient-item">
-              <span className="nutrient-label">C</span>
-              <span className="nutrient-value ml-0.5">{product.carbs ?? '-'}</span>
-            </div>
-            <span className="nutrient-divider">|</span>
-            <div className="nutrient-item">
-              <span className="nutrient-value">{product.calories ?? '-'}</span>
-              <span className="nutrient-label ml-0.5">kcal</span>
-            </div>
-          </div>
+        {/* Protein hero */}
+        <div className="flex items-baseline gap-0.5 mb-1">
+          <span className="text-[18px] font-bold leading-none text-[var(--accent-highlight)]">
+            {product.protein ?? '-'}
+          </span>
+          <span className="text-[10px] font-medium text-[var(--text-tertiary)]">g</span>
         </div>
 
-        {/* Row 4: Price + Cospa */}
-        <div className="flex items-center justify-between pt-1.5 border-t border-[var(--border-light)]">
-          <span className="text-[13px] font-semibold text-[var(--text-primary)]">
+        {/* Nutrients compact grid */}
+        <div className="grid grid-cols-2 gap-x-2 gap-y-0 text-[10px] mb-1.5">
+          <span className="text-[var(--text-muted)]">F <span className="font-semibold text-[var(--text-secondary)]">{product.fat ?? '-'}</span>g</span>
+          <span className="text-[var(--text-muted)]">C <span className="font-semibold text-[var(--text-secondary)]">{product.carbs ?? '-'}</span>g</span>
+          <span className="text-[var(--text-muted)]"><span className="font-semibold text-[var(--text-secondary)]">{product.calories ?? '-'}</span>kcal</span>
+          <span className="text-[var(--text-muted)]">繊維 <span className="font-semibold text-[var(--text-secondary)]">{product.fiber ?? '-'}</span>g</span>
+        </div>
+
+        {/* Price + Cospa */}
+        <div className="flex items-center justify-between pt-1 border-t border-[var(--border-light)]">
+          <span className="text-[12px] font-semibold text-[var(--text-primary)]">
             ¥{product.price?.toLocaleString()}
           </span>
           {proteinPer100yen && (
-            <span className="text-[11px] font-medium text-[var(--text-tertiary)] bg-[var(--bg-tertiary)] px-2 py-0.5 rounded-full">
+            <span className="text-[10px] font-medium text-[var(--text-tertiary)] bg-[var(--bg-tertiary)] px-1.5 py-0.5 rounded-full">
               {proteinPer100yen}g/¥100
             </span>
           )}
